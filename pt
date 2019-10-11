@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'httparty'
+require 'commander/import'
+require_relative './actions/deploy'
+
+# :name is optional, otherwise uses the basename of this executable
+program :name, 'Populate Tools'
+program :version, '1.0.0'
+program :description, 'Populate Tools idem'
+
+command :release do |c|
+  c.syntax = 'pt release <branch-name>'
+  c.description = 'Releases a branch to staging'
+  c.action do |args, options|
+    branch = args.first
+    current_status = `git status -z`
+    if current_status.empty?
+      %x( git checkout #{branch} )
+      %x( git pull origin #{branch} )
+      %x( git checkout staging )
+      %x( git pull origin staging )
+      %x( git merge #{branch} --no-edit )
+      %x( git push origin staging )
+      application_name = File.basename(Dir.pwd)
+      Actions::Deploy.run(application_name, "staging")
+    else
+      say "There are changes in the current branch. Release aborted"
+    end
+  end
+end
+
+command :deploy do |c|
+  c.syntax = 'pt deploy <project> <environment>'
+  c.description = 'Calls deploy bot'
+  c.action do |args, options|
+    application_name = args.first
+    environment = args.last
+    Actions::Deploy.run(application_name, environment)
+  end
+end
+
+
+command :log do |c|
+  c.syntax = 'pt log <server> <project>'
+  c.description = 'Tails a remote log'
+  c.action do |args, options|
+    server = args[0]
+    project = args[1]
+
+    if server == "staging01"
+      project = "#{project}_staging"
+      log_file_name = "staging.log"
+    else
+      log_file_name = "production.log"
+    end
+
+    system("/usr/bin/ssh #{server} 'tail -f /var/www/#{project}/shared/log/#{log_file_name}'")
+  end
+end
