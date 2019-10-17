@@ -59,3 +59,15 @@ command :log do |c|
     system("/usr/bin/ssh #{server} 'tail -f /var/www/#{project}/shared/log/#{log_file_name}'")
   end
 end
+
+command :pr do |c|
+  c.syntax = 'pt pr'
+  c.description = 'Creates a new PR for the current branch'
+  c.action do |args, options|
+    branch = `git branch --show-current`
+    project = File.basename(Dir.getwd)
+    pr_url = "https://github.com/PopulateTools/#{project}/pull/new/#{branch}"
+
+    system("open #{pr_url}")
+  end
+end
