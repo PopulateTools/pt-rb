@@ -65,8 +65,10 @@ command :pr do |c|
   c.description = 'Creates a new PR for the current branch'
   c.action do |args, options|
     branch = `git branch --show-current`
+    repository_url = `git config --get remote.origin.url`
+    organization = repository_url.split(':').last.split('/').first
     project = File.basename(Dir.getwd)
-    pr_url = "https://github.com/PopulateTools/#{project}/pull/new/#{branch}"
+    pr_url = "https://github.com/#{organization}/#{project}/pull/new/#{branch}"
 
     system("open #{pr_url}")
   end
