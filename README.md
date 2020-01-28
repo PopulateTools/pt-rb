@@ -2,7 +2,7 @@
 
 ## How to install
 
-1. Clone this repository, let's say in $DEV_DIR/: `git clone git@github.com:ferblape/pt-rb.git`
+1. Clone this repository, let's say in $DEV_DIR/: `git clone git@github.com:PopulateTools/pt-rb.git`
 2. Activate the binary: `ln -s ~/DEV_DIR/pt-rb/pt /usr/local/bin/pt`
 3. Check it works: `pt --help`
 
