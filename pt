@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'httparty'
+require 'bundler'
+require 'net/http'
+require 'net/https'
+require 'uri'
+
+Bundler.require
 require 'commander/import'
 require_relative './actions/deploy'
 

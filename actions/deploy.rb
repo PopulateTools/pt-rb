@@ -1,12 +1,12 @@
 module Actions
   class Deploy
     def self.run(application_name, environment)
-      url = "https://deploy-bot.populate.tools/api/deploys/#{application_name}/#{environment}"
+      uri = URI.parse("https://deploy-bot.populate.tools/api/deploys/#{application_name}/#{environment}")
 
-      response = HTTParty.post(url, {
-        headers: {"Authorization" => "Token token=#{ENV["DEPLOY_BOT_TOKEN"]}"},
-        debug_output: STDOUT,
-      })
+      https = Net::HTTP.new(uri.host, uri.port)
+      https.use_ssl = true
+      request = Net::HTTP::Post.new(uri.path, initheader = {"Authorization" => "Token token=#{ENV["DEPLOY_BOT_TOKEN"]}"})
+      response = https.request(request)
       puts response.body
     end
   end
