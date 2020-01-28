@@ -7,6 +7,7 @@ require 'net/https'
 require 'uri'
 require 'commander/import'
 require_relative './actions/deploy'
+require_relative './actions/gobierto_data_import'
 
 # :name is optional, otherwise uses the basename of this executable
 program :name, 'Populate Tools'
@@ -36,14 +37,13 @@ end
 
 command :deploy do |c|
   c.syntax = 'pt deploy <project> <environment>'
-  c.description = 'Calls deploy bot'
+  c.description = 'Calls deploy bot. Requires to setup the environment variable DEPLOY_BOT_TOKEN'
   c.action do |args, options|
     application_name = args.first
     environment = args.last
     Actions::Deploy.run(application_name, environment)
   end
 end
-
 
 command :log do |c|
   c.syntax = 'pt log <server> <project>'
@@ -74,5 +74,13 @@ command :pr do |c|
     pr_url = "https://github.com/#{organization}/#{project}/pull/new/#{branch}"
 
     system("open #{pr_url}")
+  end
+end
+
+command :gobierto_data_import do |c|
+  c.syntax = 'pt gobierto_data_import <gobierto_host> <dataset_name> <table_name> <data_file> [schema_file (optional)]'
+  c.description = 'Imports a dataset in gobierto data. Requires to setup the environment variable GOBIERT_DATA_ADMIN_TOKEN'
+  c.action do |args, options|
+    Actions::GobiertoDataImport.run(args)
   end
 end
