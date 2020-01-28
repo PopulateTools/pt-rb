@@ -9,30 +9,32 @@
 ## Help
 
 ```
-NAME:
+  NAME:
 
-  Populate Tools
+    Populate Tools
 
-DESCRIPTION:
+  DESCRIPTION:
 
-  Populate Tools idem
+    Populate Tools idem
 
-COMMANDS:
+  COMMANDS:
 
-  deploy  Calls deploy bot
-  help    Display global or [command] help documentation
-  log     Tails a remote log
-  pr      Creates a new PR for the current branch
-  release Releases a branch to staging
+    deploy               Calls deploy bot. Requires to setup the environment variable DEPLOY_BOT_TOKEN
+    gobierto_data_import Imports a dataset in gobierto data. Requires to setup the environment variable GOBIERT_DATA_ADMIN_TOKEN
+    help                 Display global or [command] help documentation
+    log                  Tails a remote log
+    pr                   Creates a new PR for the current branch
+    release              Releases a branch to staging
 
-GLOBAL OPTIONS:
+  GLOBAL OPTIONS:
 
-  -h, --help
-      Display help documentation
+    -h, --help
+        Display help documentation
 
-  -v, --version
-      Display version information
+    -v, --version
+        Display version information
 
-  -t, --trace
-      Display backtrace when an error occurs
+    -t, --trace
+        Display backtrace when an error occurs
+
 ```
