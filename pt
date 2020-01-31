@@ -69,9 +69,29 @@ command :pr do |c|
   c.action do |args, options|
     branch = `git branch --show-current`
     repository_url = `git config --get remote.origin.url`
-    organization = repository_url.split(':').last.split('/').first
-    project = File.basename(Dir.getwd)
+    organization, project = repository_url.split(':').last.split('/')
+    project = project.strip.gsub(/\.git/, '')
     pr_url = "https://github.com/#{organization}/#{project}/pull/new/#{branch}"
+
+    system("open #{pr_url}")
+  end
+end
+
+command :gh do |c|
+  c.syntax = 'pt gh [issues | prs | wiki]'
+  c.description = 'Opens the github page of the current project'
+  c.action do |args, options|
+    option = args[0]
+    suffix = case option
+               when "prs"
+                 "pulls"
+               else
+                 option
+             end
+    repository_url = `git config --get remote.origin.url`
+    organization, project = repository_url.split(':').last.split('/')
+    project = project.strip.gsub(/\.git/, '')
+    pr_url = "https://github.com/#{organization}/#{project}/#{suffix}"
 
     system("open #{pr_url}")
   end

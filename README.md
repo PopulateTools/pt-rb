@@ -5,7 +5,7 @@
 1. Clone this repository, let's say in `$DEV_DIR/`: `cd $DEV_DIR/; git clone git@github.com:PopulateTools/pt-rb.git`
 2. Activate the binary: `ln -s ~/DEV_DIR/pt-rb/pt /usr/local/bin/pt`
 3. Check it works: `pt --help`
-4. Check the help of a command: 
+4. Check the help of a command:
 
 ```
 $ pt gobierto_data_import --help
@@ -30,6 +30,7 @@ $ pt gobierto_data_import --help
 - log: tails a log in a remote server
 - pr: creates a PR in the current branch
 - release: merges the current branch into staging and calls deploy
+- gh: github project links
 - help: displays help
 
 ```
@@ -45,6 +46,7 @@ $ pt gobierto_data_import --help
 
     deploy               Calls deploy bot. Requires to setup the environment variable DEPLOY_BOT_TOKEN
     gobierto_data_import Imports a dataset in gobierto data. Requires to setup the environment variable GOBIERT_DATA_ADMIN_TOKEN
+    gh                   Opens the github page of the current project
     help                 Display global or [command] help documentation
     log                  Tails a remote log
     pr                   Creates a new PR for the current branch
