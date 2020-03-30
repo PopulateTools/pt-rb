@@ -18,7 +18,7 @@ command :release do |c|
   c.syntax = 'pt release <branch-name>'
   c.description = 'Releases a branch to staging'
   c.action do |args, options|
-    branch = args.first
+    branch = args.first || `git branch --show-current`
     current_status = `git status -z`
     if current_status.empty?
       %x( git checkout #{branch} )
