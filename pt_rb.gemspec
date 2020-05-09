@@ -10,10 +10,11 @@ Gem::Specification.new do |spec|
   spec.authors = "Fernando Blat"
   spec.email = "fernando@populate.tools"
 
-  spec.files = Dir["*.{md,txt}", "{actions}/**/*"]
+  spec.files = Dir["*.{md,txt}", "{lib}/**/*"]
 
   spec.bindir = "."
   spec.executables = %w(pt)
+  spec.require_path  = "lib"
 
   spec.add_dependency "commander", "~> 4.5"
 

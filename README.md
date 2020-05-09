@@ -25,6 +25,7 @@ $ pt gobierto_data_import --help
 
 ## Available commands
 
+- circle: Opens current project branch in CircleCI
 - deploy: calls deploy-bot
 - gobierto_data_import: imports a dataset in gobierto data
 - log: tails a log in a remote server
@@ -44,9 +45,10 @@ $ pt gobierto_data_import --help
 
   COMMANDS:
 
+    circle               Opens current project branch in CircleCI
     deploy               Calls deploy bot. Requires to setup the environment variable DEPLOY_BOT_TOKEN
-    gobierto_data_import Imports a dataset in gobierto data. Requires to setup the environment variable GOBIERT_DATA_ADMIN_TOKEN
     gh                   Opens the github page of the current project
+    gobierto_data_import Imports a dataset in gobierto data. Requires to setup the environment variable GOBIERT_DATA_ADMIN_TOKEN
     help                 Display global or [command] help documentation
     log                  Tails a remote log
     pr                   Creates a new PR for the current branch
@@ -62,5 +64,4 @@ $ pt gobierto_data_import --help
 
     -t, --trace
         Display backtrace when an error occurs
-
 ```

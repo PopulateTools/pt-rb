@@ -1,14 +1,17 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "rubygems"
-require "bundler"
+# dependencies
+require "commander/import"
+
+# standard lib
 require "net/http"
 require "net/https"
-require "commander/import"
-require_relative "./lib/utils"
-require_relative "./lib/actions/deploy"
-require_relative "./lib/actions/gobierto_data_import"
+
+# modules
+require "utils"
+require "actions/deploy"
+require "actions/gobierto_data_import"
 
 program :name, "Populate Tools"
 program :version, "1.0.0"
