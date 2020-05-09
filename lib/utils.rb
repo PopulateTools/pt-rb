@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Utils
   def self.git_branch
     `git branch --show-current`.strip

@@ -67,7 +67,7 @@ command :pr do |c|
   c.syntax = "pt pr"
   c.description = "Creates a new PR for the current branch"
   c.action do |_args, _options|
-    system %Q{ open "https://github.com/#{Utils.git_organization}/#{Utils.git_project}/pull/new/#{Utils.git_branch}" }
+    system %( open "https://github.com/#{Utils.git_organization}/#{Utils.git_project}/pull/new/#{Utils.git_branch}" )
   end
 end
 
@@ -82,7 +82,7 @@ command :gh do |c|
              else
                option
              end
-    system %Q{ open "https://github.com/#{Utils.git_organization}/#{Utils.git_project}/#{suffix}" }
+    system %( open "https://github.com/#{Utils.git_organization}/#{Utils.git_project}/#{suffix}" )
   end
 end
 
@@ -98,6 +98,6 @@ command :circle do |c|
   c.syntax = "pt circle"
   c.description = "Opens current project branch in CircleCI"
   c.action do |_args, _options|
-    system %Q{ open "https://app.circleci.com/pipelines/github/#{Utils.git_organization}/#{Utils.git_project}?branch=#{Utils.git_branch}" }
+    system %( open "https://app.circleci.com/pipelines/github/#{Utils.git_organization}/#{Utils.git_project}?branch=#{Utils.git_branch}" )
   end
 end

@@ -14,7 +14,7 @@ module Actions
 
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
-      request = Net::HTTP::Post.new(uri.path, initheader = { "Authorization" => "Token token=#{ENV[env_var]}" })
+      request = Net::HTTP::Post.new(uri.path, { "Authorization" => "Token token=#{ENV[env_var]}" })
       response = https.request(request)
       puts response.body
     end
