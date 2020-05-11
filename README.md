@@ -3,9 +3,9 @@
 ## How to install
 
 1. Clone this repository, let's say in `$DEV_DIR`: `cd $DEV_DIR; git clone git@github.com:PopulateTools/pt-rb.git`
-2. Activate the binary: `ln -s $DEV_DIR/pt-rb/pt /usr/local/bin/pt`
-3. Check it works: `pt --help`
-4. Check the help of a command:
+2. Build the gem `gem build pt.gemspec`
+3. Install the gem `gem install pt-1.0.0.gem`
+4. Check it works: `pt --help`
 
 ```
 $ pt gobierto_data_import --help
