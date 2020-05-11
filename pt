@@ -97,8 +97,8 @@ command :gobierto_data_import do |c|
   end
 end
 
-command :circle do |c|
-  c.syntax = "pt circle"
+command :ci do |c|
+  c.syntax = "pt ci"
   c.description = "Opens current project branch in CircleCI"
   c.action do |_args, _options|
     system %( open "https://app.circleci.com/pipelines/github/#{Utils.git_organization}/#{Utils.git_project}?branch=#{Utils.git_branch}" )
